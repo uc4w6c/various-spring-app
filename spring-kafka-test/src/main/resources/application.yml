@@ -1,3 +1,8 @@
 spring:
   kafka:
     bootstrap-servers: localhost:9092
+  # 以下の設定とbanner.gifファイルを配置すれば設定される
+  # banner:
+    # image:
+      # bitdepth: 8
+      # pixelmode: block
