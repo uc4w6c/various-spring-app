@@ -9,6 +9,7 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 @Component
 // @EnableConfigurationProperties
 public class KafkaProducer {
+    /*
     private KafkaTemplate<String,String> kafkaTemplate;
 
     KafkaProducer(KafkaTemplate<String,String> kafkaTemplate) {
@@ -19,4 +20,5 @@ public class KafkaProducer {
         System.out.println("send:" + message);
         kafkaTemplate.send("test1" ,message);
     }
+    */
 }

@@ -20,7 +20,7 @@ public class HelloController {
 
     @GetMapping
     public String hello() {
-        kafkaProducer.sendKafka("Hello Kafka");
+        // kafkaProducer.sendKafka("Hello Kafka");
         return "Hello World!";
     }
 
