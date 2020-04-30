@@ -1,0 +1,7 @@
+bootJar {
+    mainClassName = "com.example.demo.DemoApplicationKt"
+}
+
+dependencies {
+    implementation project(":share")
+}
