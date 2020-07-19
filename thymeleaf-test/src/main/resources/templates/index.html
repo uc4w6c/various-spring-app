@@ -7,11 +7,28 @@
 <body>
     <p>インクリメント</p>
     <select id="increment" name="increment">
-        <option th:each="i : ${#numbers.sequence(from_num, to_num)}" th:value="${i}"th:text="${i}"></option>
+        <option th:each="i : ${#numbers.sequence(1, 10)}" th:value="${i}"th:text="${i}"></option>
     </select>
     <p>デクリメント</p>
     <select id="decrement" name="decrement">
+        <option th:each="i : ${#numbers.sequence(10, 1, -1)}" th:value="${i}"th:text="${i}"></option>
+    </select>
+    <p>2ずつインクリメント</p>
+    <select id="two_increment" name="two_increment">
+        <option th:each="i : ${#numbers.sequence(1, 10, 2)}" th:value="${i}"th:text="${i}"></option>
+    </select>
+
+    <p>インクリメント</p>
+    <select id="increment_var" name="increment_var">
+        <option th:each="i : ${#numbers.sequence(from_num, to_num)}" th:value="${i}"th:text="${i}"></option>
+    </select>
+    <p>デクリメント</p>
+    <select id="decrement_var" name="decrement_var">
         <option th:each="i : ${#numbers.sequence(to_num, from_num, -1)}" th:value="${i}"th:text="${i}"></option>
+    </select>
+    <p>2ずつインクリメント</p>
+    <select id="two_increment_var" name="two_increment_var">
+        <option th:each="i : ${#numbers.sequence(from_num, to_num, 2)}" th:value="${i}"th:text="${i}"></option>
     </select>
 
     <p>List処理</p>

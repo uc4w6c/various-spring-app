@@ -17,5 +17,4 @@ public class HomeController {
         model.addAttribute("messages", messages);
         return "index";
     }
-
 }
