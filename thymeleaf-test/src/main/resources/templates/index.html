@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <p>インクリメント</p>
+    <select id="increment" name="increment">
+        <option th:each="i : ${#numbers.sequence(from_num, to_num)}" th:value="${i}"th:text="${i}"></option>
+    </select>
+    <p>デクリメント</p>
+    <select id="decrement" name="decrement">
+        <option th:each="i : ${#numbers.sequence(to_num, from_num, -1)}" th:value="${i}"th:text="${i}"></option>
+    </select>
+
+    <p>List処理</p>
+    <div th:if="${not #lists.isEmpty(messages)}">
+        <ul>
+            <li th:each="message : ${messages}" th:text="${message}"></li>
+        </ul>
+    </div>
+</body>
+</html>
