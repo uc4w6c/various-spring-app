@@ -22,5 +22,3 @@ DataSourceInitializer.getResources
 The specified resource  data.sql does not exist.
 Resource 'data.sql' does not exist
 
-https://github.com/spring-projects/spring-boot/pull/25620
-
