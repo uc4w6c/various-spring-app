@@ -17,3 +17,4 @@ services:
     volumes:
       - ./apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
       - ./apache/log:/var/log/httpd
+      - ./apache/public:/var/www/html

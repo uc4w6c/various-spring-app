@@ -4,13 +4,13 @@
 <body>
     <h1>Index Page!</h1>
     <script>
-      axios.get('http://localhost:1080/', {
+      axios.get('http://localhost:1080/index.json', {
         headers: {
           "X-CUSTOM": "true"
         }
       })
       .then(response => {
-        console.log(response.data);
+        console.log(response.data.msg);
       })
       .catch(error => {
         console.log(error);
