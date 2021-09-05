@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/")
 public class IndexController {
-    // @CrossOrigin
+    @CrossOrigin
     @GetMapping
     // @RequestMapping(method = {RequestMethod.GET, RequestMethod.OPTIONS})
     public String index() {

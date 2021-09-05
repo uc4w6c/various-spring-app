@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property resource="application.yml"/>
+	<contextName>com.example.logbacknooutput.LogbackNoOutputApplication</contextName>
+
+	<springProfile name="local">
+		<include resource="org/springframework/boot/logging/logback/base.xml" />
+		<root level="INFO">
+			<appender-ref ref="CONSOLE" />
+		</root>
+	</springProfile>
+
+	<springProfile name="prod">
+		<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+			<encoder class="net.logstash.logback.encoder.LogstashEncoder">
+			</encoder>
+		</appender>
+		<root level="INFO">
+			<appender-ref ref="CONSOLE" />
+		</root>
+	</springProfile>
+</configuration>
