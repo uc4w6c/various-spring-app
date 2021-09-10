@@ -4,6 +4,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConstructorBinding;
 
 @ConfigurationProperties("test")
-@ConstructorBinding
+// @ConstructorBinding
 public record TestProperties(String name, int age) {
 }
