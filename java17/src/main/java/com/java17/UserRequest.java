@@ -5,5 +5,5 @@ import javax.validation.constraints.NotBlank;
 import org.springframework.lang.NonNull;
 import org.springframework.validation.annotation.Validated;
 
-public record User(@NotBlank String name, int age) {
+public record UserRequest(@NotBlank String name, int age) {
 }

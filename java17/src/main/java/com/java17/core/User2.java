@@ -1,10 +1,6 @@
-package com.java17;
-
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+package com.java17.core;
 
 public class User2 {
-    @NotBlank
     private String name;
     private int age;
 
