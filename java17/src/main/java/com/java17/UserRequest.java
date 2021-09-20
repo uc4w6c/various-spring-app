@@ -2,8 +2,4 @@ package com.java17;
 
 import javax.validation.constraints.NotBlank;
 
-import org.springframework.lang.NonNull;
-import org.springframework.validation.annotation.Validated;
-
-public record UserRequest(@NotBlank String name, int age) {
-}
+public record UserRequest(@NotBlank String name, int age) {}
