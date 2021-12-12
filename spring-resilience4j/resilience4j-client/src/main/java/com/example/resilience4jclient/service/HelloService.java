@@ -19,11 +19,13 @@ public class HelloService {
 
     HttpRequest request = HttpRequest.newBuilder(
             URI.create("http://localhost:8081/hello"))
-        // .header("accept", "application/json")
         .build();
 
     try {
       HttpResponse<String> response = httpClient.send(request, BodyHandlers.ofString());
+      if (response.statusCode() >= 500) {
+        throw new IOException("error");
+      }
       return response.body();
     } catch (IOException | InterruptedException e) {
       throw new RuntimeException(e);
