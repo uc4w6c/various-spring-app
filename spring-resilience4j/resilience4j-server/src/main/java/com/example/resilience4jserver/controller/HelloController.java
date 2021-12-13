@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/")
 public class HelloController {
   @GetMapping("hello")
-  public String index() {
-    // return "Server Hello!";
+  public String hello() {
+    return "Server Hello!";
+  }
+
+  @GetMapping("failure")
+  public String failure() {
     throw new RuntimeException("error");
   }
 }
