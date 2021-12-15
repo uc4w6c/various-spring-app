@@ -23,14 +23,14 @@ resilience4j.circuitbreaker:
   instances:
     backendA:
       registerHealthIndicator: true
-      slidingWindowSize: 3
-      minimumNumberOfCalls: 1
-      permittedNumberOfCallsInHalfOpenState: 3
-      automaticTransitionFromOpenToHalfOpenEnabled: true
-      waitDurationInOpenState: 10s
-      failureRateThreshold: 50
+      slidingWindowSize: 3 # ここで指定した数のコール数を保持してエラーレートの計算に利用する
+      minimumNumberOfCalls: 1 # エラーレートを計算するのに必要な最小のコール数
+      permittedNumberOfCallsInHalfOpenState: 3 # HALF_OPENの時に許可される呼び出しの数
+      automaticTransitionFromOpenToHalfOpenEnabled: true # trueだと自動でHALF_OPENに移行する
+      waitDurationInOpenState: 10s # OPENからHALF_OPENに移行する前に待機する時間
+      failureRateThreshold: 50 # 失敗率の閾値。この数値を超えて失敗しているとOPENに移行する
       eventConsumerBufferSize: 10
-      recordExceptions:
+      recordExceptions: # ここで指定したExceptionが発生すると失敗としてカウントする
         # - java.util.concurrent.TimeoutException
         # - java.io.IOException
         # - java.lang.RuntimeException
