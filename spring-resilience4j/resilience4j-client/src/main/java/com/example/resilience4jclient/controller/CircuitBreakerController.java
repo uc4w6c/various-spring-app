@@ -15,14 +15,12 @@ public class CircuitBreakerController {
     this.circuitBreakerService = circuitBreakerService;
   }
 
-  @GetMapping
-  @RequestMapping("success")
+  @GetMapping("success")
   public String success() {
     return circuitBreakerService.success();
   }
 
-  @GetMapping
-  @RequestMapping("failure")
+  @GetMapping("failure")
   public String failure() {
     return circuitBreakerService.failure();
   }

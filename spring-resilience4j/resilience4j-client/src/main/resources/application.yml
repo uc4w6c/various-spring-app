@@ -21,17 +21,25 @@ management.metrics.distribution.percentiles-histogram.resilience4j.circuitbreake
 
 resilience4j.circuitbreaker:
   instances:
-    backendA:
+    backendA: # 設定したい接続先システムを指定
       registerHealthIndicator: true
+      slidingWindowType: COUNT_BASED # slidingWindowTypeをカウントベースにする
       slidingWindowSize: 3 # ここで指定した数のコール数を保持してエラーレートの計算に利用する
       minimumNumberOfCalls: 1 # エラーレートを計算するのに必要な最小のコール数
       permittedNumberOfCallsInHalfOpenState: 3 # HALF_OPENの時に許可される呼び出しの数
       automaticTransitionFromOpenToHalfOpenEnabled: true # trueだと自動でHALF_OPENに移行する
       waitDurationInOpenState: 10s # OPENからHALF_OPENに移行する前に待機する時間
       failureRateThreshold: 50 # 失敗率の閾値。この数値を超えて失敗しているとOPENに移行する
-      eventConsumerBufferSize: 10
+      # eventConsumerBufferSize: 10
       recordExceptions: # ここで指定したExceptionが発生すると失敗としてカウントする
         # - java.util.concurrent.TimeoutException
         # - java.io.IOException
         # - java.lang.RuntimeException
+        - org.springframework.web.client.HttpServerErrorException
+resilience4j.retry:
+  instances:
+    backendA:
+      maxAttempts: 2 # 最大試行回数
+      waitDuration: 2s # 再試行する前に待つ時間
+      retryExceptions:
         - org.springframework.web.client.HttpServerErrorException
