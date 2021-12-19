@@ -18,4 +18,8 @@ public class BackendARepository {
   public String failure() {
     return restTemplate.getForObject("http://localhost:8081/failure", String.class);
   }
+
+  public String delay(int delaySecond) {
+    return restTemplate.getForObject("http://localhost:8081/delay/" + delaySecond, String.class);
+  }
 }

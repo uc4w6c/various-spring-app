@@ -36,6 +36,12 @@ resilience4j.circuitbreaker:
         # - java.io.IOException
         # - java.lang.RuntimeException
         - org.springframework.web.client.HttpServerErrorException
+
+resilience4j.bulkhead:
+  instances:
+    backendA:
+      maxConcurrentCalls: 1
+
 resilience4j.retry:
   instances:
     backendA:
