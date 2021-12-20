@@ -49,3 +49,18 @@ resilience4j.retry:
       waitDuration: 2s # 再試行する前に待つ時間
       retryExceptions:
         - org.springframework.web.client.HttpServerErrorException
+
+resilience4j.ratelimiter:
+  instances:
+    backendA:
+      limitForPeriod: 1 # 指定した期間の間に呼び出し可能な回数
+      limitRefreshPeriod: 10s # 計測する期間
+      timeoutDuration: 5s # スレッドが待機するデフォルトの時間
+      registerHealthIndicator: true
+      eventConsumerBufferSize: 100
+
+resilience4j.timelimiter:
+  instances:
+    backendA:
+      timeoutDuration: 4s # タイムアウトする時間の設定
+      cancelRunningFuture: false # タイムアウト時に処理をキャンセルするか
