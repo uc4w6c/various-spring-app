@@ -1,1 +1,1 @@
-insert into users values ('1', 'プロになるJava');
+insert into books values ('1', 'プロになるJava');
