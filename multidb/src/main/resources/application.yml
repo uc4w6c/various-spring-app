@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    first:
+      url : jdbc:postgresql://localhost:5432/postgres
+      username : postgres
+      password : password
+      driverClassName : org.postgresql.Driver
+    second:
+      url : jdbc:postgresql://localhost:5433/postgres
+      username : postgres
+      password : password
+      driverClassName : org.postgresql.Driver
+  flyway:
+    enabled: false
