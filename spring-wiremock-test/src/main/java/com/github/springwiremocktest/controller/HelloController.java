@@ -1,10 +1,10 @@
-package com.github.springwiremocktest;
+package com.github.springwiremocktest.controller;
 
+import com.github.springwiremocktest.entity.HelloEntity;
+import com.github.springwiremocktest.service.HelloService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Map;
 
 @RestController
 @RequestMapping("hello")
@@ -16,7 +16,7 @@ public class HelloController {
   }
 
   @GetMapping
-  public Map<String, String> index() {
-    return Map.of("result", helloService.call());
+  public HelloEntity index() {
+    return helloService.call();
   }
 }

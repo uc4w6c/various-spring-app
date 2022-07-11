@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.7.1'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'com.diffplug.spotless' version '6.8.0'
 }
 
 group = 'com.github'
@@ -20,10 +21,17 @@ dependencies {
 			classifier = "osx-aarch_64"
 		}
 	}
+	implementation 'com.google.googlejavaformat:google-java-format:1.15.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.projectreactor:reactor-test'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+spotless {
+	java {
+		googleJavaFormat('1.15.0')
+	}
 }

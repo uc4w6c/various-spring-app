@@ -5,9 +5,9 @@
   },
   "response": {
     "status": 200,
-    "body": "Hello world!!",
+    "body": "{ \"name\": \"taro\", \"age\": 22 }",
     "headers": {
-      "content-type": "text/plain"
+      "content-type": "application/json"
     }
   }
 }
