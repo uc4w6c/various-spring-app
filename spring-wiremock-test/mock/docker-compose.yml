@@ -1,0 +1,8 @@
+version: '3'
+services:
+  wiremock:
+    image: wiremock/wiremock:2.33.2
+    ports:
+      - 8081:8080
+    volumes:
+      - ./wiremock/mappings:/home/wiremock/mappings
