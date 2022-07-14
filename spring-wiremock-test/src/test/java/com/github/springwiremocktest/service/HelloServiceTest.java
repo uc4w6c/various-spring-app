@@ -1,28 +1,26 @@
 package com.github.springwiremocktest.service;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
+
 import com.github.springwiremocktest.configuration.HelloServerConfiguration;
 import com.github.springwiremocktest.entity.HelloEntity;
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-
 @WireMockTest
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class HelloServiceTest {
-  @Autowired
-  private WebClient.Builder webClientBuilder;
+  @Autowired private WebClient.Builder webClientBuilder;
 
   /**
-   * GETメソッドの呼び出しテスト
+   * 単純なGETメソッドの呼び出しテスト
+   *
    * @param wmRuntimeInfo
    */
   @Test

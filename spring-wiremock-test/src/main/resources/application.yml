@@ -1,3 +1,5 @@
 api:
   hello-server:
     url: http://localhost:8081/
+  stock:
+    url: http://localhost:8081/

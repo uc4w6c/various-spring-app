@@ -10,7 +10,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class HelloService {
   private WebClient webClient;
 
-  public HelloService(WebClient.Builder webClientBuilder, HelloServerConfiguration helloServerConfiguration) {
+  public HelloService(
+      WebClient.Builder webClientBuilder, HelloServerConfiguration helloServerConfiguration) {
     this.webClient = webClientBuilder.baseUrl(helloServerConfiguration.url()).build();
   }
 
