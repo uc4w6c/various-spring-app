@@ -3,9 +3,8 @@ package com.github.springwiremocktest.service;
 import com.github.springwiremocktest.controller.response.ProductResponseEntity;
 import com.github.springwiremocktest.dao.api.StockDao;
 import com.github.springwiremocktest.dao.db.ProductDao;
-import com.github.springwiremocktest.entity.HelloEntity;
 import com.github.springwiremocktest.entity.ProductEntity;
-import org.springframework.http.MediaType;
+import com.github.springwiremocktest.exceptions.ProductNotFoundException;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -19,8 +18,8 @@ public class ProductService {
   }
 
   public ProductResponseEntity findById(String id) {
-    // 本来的にはここをOptionalにして存在しない場合はProductNotFoundExceptionを投げる
-    ProductEntity productEntity = productDao.findById(id);
+    ProductEntity productEntity =
+        productDao.findById(id).orElseThrow(ProductNotFoundException::new);
     int quantity = stockDao.findById(id).quantity();
 
     return new ProductResponseEntity(id, productEntity.price(), quantity);

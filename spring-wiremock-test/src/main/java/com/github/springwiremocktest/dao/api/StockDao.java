@@ -1,9 +1,6 @@
 package com.github.springwiremocktest.dao.api;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.springwiremocktest.configuration.HelloServerConfiguration;
 import com.github.springwiremocktest.configuration.StockConfiguration;
-import com.github.springwiremocktest.entity.HelloEntity;
 import com.github.springwiremocktest.entity.StockEntity;
 import com.github.springwiremocktest.entity.StockReduceEntity;
 import org.springframework.http.MediaType;
