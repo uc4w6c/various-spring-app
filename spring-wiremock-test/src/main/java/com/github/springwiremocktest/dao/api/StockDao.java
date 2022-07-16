@@ -1,12 +1,15 @@
 package com.github.springwiremocktest.dao.api;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.springwiremocktest.configuration.HelloServerConfiguration;
 import com.github.springwiremocktest.configuration.StockConfiguration;
 import com.github.springwiremocktest.entity.HelloEntity;
 import com.github.springwiremocktest.entity.StockEntity;
+import com.github.springwiremocktest.entity.StockReduceEntity;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 @Component
 public class StockDao {
@@ -23,6 +26,17 @@ public class StockDao {
         .accept(MediaType.APPLICATION_JSON)
         .retrieve()
         .bodyToMono(StockEntity.class)
+        .block();
+  }
+
+  public void reduce(StockReduceEntity stockReduceEntity) {
+    webClient
+        .post()
+        .uri("/stock/products/reduce")
+        .body(Mono.just(stockReduceEntity), StockReduceEntity.class)
+        .accept(MediaType.APPLICATION_JSON)
+        .retrieve()
+        .bodyToMono(void.class)
         .block();
   }
 }
