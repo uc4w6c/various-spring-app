@@ -5,10 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.RegisterExtension;
 
-@Example(name = "root")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class ExampleTest {
+public class ExampleRegisterPerClassTest {
+  @RegisterExtension private ExampleExtension exampleExtension = new ExampleExtension();
+
   @Test
   void root() {
     System.out.println("root");
@@ -16,8 +18,9 @@ public class ExampleTest {
   }
 
   @Nested
-  @Example(name = "nest")
   class Nest {
+    @RegisterExtension private ExampleExtension exampleExtension = new ExampleExtension();
+
     @Test
     void nest() {
       System.out.println("nest");

@@ -1,13 +1,11 @@
 package com.github.springwiremocktest;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.testcontainers.junit.jupiter.Container;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @WireMockTest(httpPort = 8765)
 class WireMockNestTest {

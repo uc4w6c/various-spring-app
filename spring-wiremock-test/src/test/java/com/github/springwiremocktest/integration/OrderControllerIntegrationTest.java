@@ -1,5 +1,7 @@
 package com.github.springwiremocktest.integration;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+
 import com.github.springwiremocktest.controller.request.OrderPurchaseRequest;
 import com.github.springwiremocktest.entity.StockEntity;
 import org.junit.jupiter.api.Test;
@@ -8,8 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
-
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class OrderControllerIntegrationTest extends AbstractIntegrationTest {
@@ -28,7 +28,8 @@ public class OrderControllerIntegrationTest extends AbstractIntegrationTest {
         .body(Mono.just(orderPurchaseRequest), OrderPurchaseRequest.class)
         .accept(MediaType.APPLICATION_JSON)
         .exchange()
-        .expectStatus().isCreated();
+        .expectStatus()
+        .isCreated();
 
     verify(1, postRequestedFor(urlEqualTo("/stock/products/reduce")));
   }
