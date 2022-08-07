@@ -9,21 +9,21 @@ public class Insert {
     String password = "password";
 
     final String sql1 = "insert into books values (2, 'Effective');";
-    final String sql2 = "insert into books values (2, 'デザインパターン');";
+    final String sql2 = "insert into books values (3, 'デザインパターン');";
 
-    ResultSet resultSet = null;
+    boolean isThrowException = true;
 
     try (Connection connection = DriverManager.getConnection(connectionUrl, user, password)) {
       connection.setAutoCommit(false);
-      try (PreparedStatement statement = connection.prepareStatement(sql1)) {
-        int rows = statement.executeUpdate();
-      } catch (SQLException e) {
-        connection.rollback();
-        throw e;
-      }
-      try (PreparedStatement statement = connection.prepareStatement(sql2)) {
-        int rows = statement.executeUpdate();
-        throw new SQLException();
+      try (PreparedStatement statement1 = connection.prepareStatement(sql1);
+           PreparedStatement statement2 = connection.prepareStatement(sql2)
+      ) {
+        statement1.executeUpdate();
+        if (isThrowException) {
+          throw new SQLException();
+        }
+        statement2.executeUpdate();
+        connection.commit();
       } catch (SQLException e) {
         connection.rollback();
         throw e;
