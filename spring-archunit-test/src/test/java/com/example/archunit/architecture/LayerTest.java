@@ -18,7 +18,4 @@ public class LayerTest {
       .whereLayer("Controller").mayNotBeAccessedByAnyLayer()
       .whereLayer("Service").mayOnlyBeAccessedByLayers("Controller")
       .whereLayer("Repository").mayOnlyBeAccessedByLayers("Service");
-
-
-
 }
