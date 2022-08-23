@@ -2,9 +2,8 @@ package com.example.archunit.service;
 
 import com.example.archunit.entity.BookEntity;
 import com.example.archunit.repository.BookRepository;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 @Service
 public class BookService {

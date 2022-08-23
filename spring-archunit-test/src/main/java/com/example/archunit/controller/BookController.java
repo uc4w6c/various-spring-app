@@ -4,14 +4,13 @@ import com.example.archunit.entity.BookEntity;
 import com.example.archunit.exceptions.NotFoundException;
 import com.example.archunit.repository.BookRepository;
 import com.example.archunit.service.BookService;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.lang.NonNull;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("books")
@@ -32,7 +31,8 @@ public class BookController {
 
   @GetMapping("{id}")
   public BookEntity findById(@PathVariable("id") @NonNull long id) {
-    return bookRepository.findById(id)
+    return bookRepository
+        .findById(id)
         .orElseThrow(() -> new NotFoundException("指定した本は見つかりませんでした。"));
   }
 
