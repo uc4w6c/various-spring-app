@@ -9,7 +9,7 @@ import com.tngtech.archunit.lang.ArchRule;
 @AnalyzeClasses(packages = "com.example.archunit")
 public class ClassNamingTest {
   @ArchTest
-  public static final ArchRule クラス名がControlerで終わる =
+  public static final ArchRule クラス名がControllerで終わる =
       classes()
           .that()
           .resideInAPackage("com.example.archunit.controller..")

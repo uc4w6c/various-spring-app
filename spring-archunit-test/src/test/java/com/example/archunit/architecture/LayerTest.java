@@ -12,16 +12,11 @@ public class LayerTest {
   public static final ArchRule レイヤー間の依存関係チェック =
       layeredArchitecture()
           .consideringAllDependencies()
-          .layer("Controller")
-          .definedBy("com.example.archunit.controller..")
-          .layer("Service")
-          .definedBy("com.example.archunit.service..")
-          .layer("Repository")
-          .definedBy("com.example.archunit.repository..")
-          .whereLayer("Controller")
-          .mayNotBeAccessedByAnyLayer()
-          .whereLayer("Service")
-          .mayOnlyBeAccessedByLayers("Controller")
-          .whereLayer("Repository")
-          .mayOnlyBeAccessedByLayers("Service");
+          .layer("Controller").definedBy("com.example.archunit.controller..")
+          .layer("Service").definedBy("com.example.archunit.service..")
+          .layer("Repository").definedBy("com.example.archunit.repository..")
+
+          .whereLayer("Controller").mayNotBeAccessedByAnyLayer()
+          .whereLayer("Service").mayOnlyBeAccessedByLayers("Controller")
+          .whereLayer("Repository").mayOnlyBeAccessedByLayers("Service");
 }

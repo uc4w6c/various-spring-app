@@ -1,3 +1,3 @@
 package com.example.archunit.controller;
 
-public class TestCont {}
+public class TestAction {}
