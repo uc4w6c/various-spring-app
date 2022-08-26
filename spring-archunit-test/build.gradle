@@ -15,6 +15,7 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework:spring-tx'
 	implementation("io.netty:netty-resolver-dns-native-macos:4.1.78.Final") {
 		artifact {
 			classifier = "osx-aarch_64"
@@ -25,6 +26,7 @@ dependencies {
 	implementation 'com.google.googlejavaformat:google-java-format:1.15.0'
 	implementation 'org.springdoc:springdoc-openapi-ui:1.6.10'
 	implementation 'org.apache.solr:solr-solrj:8.11.2'
+	implementation 'org.springdoc:springdoc-openapi-ui:1.6.11'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'com.tngtech.archunit:archunit-junit5:1.0.0-rc1'
 }

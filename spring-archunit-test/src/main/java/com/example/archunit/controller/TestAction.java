@@ -1,3 +1,10 @@
 package com.example.archunit.controller;
 
-public class TestAction {}
+import org.springframework.transaction.annotation.Transactional;
+
+public class TestAction {
+  @Transactional
+  public void test() {
+    System.out.println("aa");
+  }
+}
