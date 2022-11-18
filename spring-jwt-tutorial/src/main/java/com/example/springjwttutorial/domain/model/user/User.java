@@ -1,5 +1,7 @@
 package com.example.springjwttutorial.domain.model.user;
 
+import com.example.springjwttutorial.application.exception.NotEnoughException;
+
 public record User(
     int id,
     String name,
@@ -9,8 +11,7 @@ public record User(
     if(this.coin.canGacha(pay)){
       return new User(this.id, this.name, this.coin.sub(pay));
     } else {
-      // TODO エラー処理
-      throw new RuntimeException();
+      throw new NotEnoughException();
     }
   }
 

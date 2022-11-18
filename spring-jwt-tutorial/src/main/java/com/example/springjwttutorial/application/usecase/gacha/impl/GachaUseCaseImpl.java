@@ -1,6 +1,7 @@
 package com.example.springjwttutorial.application.usecase.gacha.impl;
 
 import com.example.springjwttutorial.application.usecase.gacha.GachaUseCase;
+import com.example.springjwttutorial.domain.model.gacha.Gacha;
 import com.example.springjwttutorial.domain.model.user.User;
 import com.example.springjwttutorial.domain.repository.character.CharacterRepository;
 import com.example.springjwttutorial.domain.model.character.Character;
@@ -32,6 +33,14 @@ public class GachaUseCaseImpl implements GachaUseCase {
             .stream().map(
                 i -> new Character(i.getId(), i.getName(), i.getLank())
             ).collect(Collectors.toList());
-    return characters;
+    // ガチャガチャの作成
+    Gacha gacha = new Gacha(characters);
+    // コインの利用
+    user.useCoin(gacha.needCoind());
+    // ガチャの利用（キャラクターの取得）
+    List<Character> characterList = gacha.play();
+    // TODO ユーザー情報の更新
+
+    return characterList;
   }
 }
