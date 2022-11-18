@@ -1,5 +1,6 @@
 package com.example.springjwttutorial.infrastructure.dto.user;
 
+import com.example.springjwttutorial.domain.model.user.Coin;
 import com.example.springjwttutorial.domain.model.user.User;
 
 public class UserEntity {
@@ -41,6 +42,6 @@ public class UserEntity {
   }
 
   public User toUser() {
-    return new User(name, coin);
+    return new User(id, name, new Coin(coin));
   }
 }

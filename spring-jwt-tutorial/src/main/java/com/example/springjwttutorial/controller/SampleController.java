@@ -13,6 +13,11 @@ public class SampleController {
     this.userRepository = userRepository;
   }
 
+  @GetMapping("/api/test")
+  public String test(){
+    return "認証が成功しています";
+  }
+
   @PostMapping("/sample")
   @CrossOrigin
   public SampleResponse post(@RequestBody SampleRequest sampleRequest) {
