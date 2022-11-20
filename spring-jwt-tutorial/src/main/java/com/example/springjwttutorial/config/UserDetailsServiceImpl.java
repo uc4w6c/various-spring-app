@@ -1,7 +1,7 @@
 package com.example.springjwttutorial.config;
 
 import com.example.springjwttutorial.domain.repository.user.UserRepository;
-import com.example.springjwttutorial.infrastructure.dto.user.UserEntity;
+import com.example.springjwttutorial.domain.dto.user.UserEntity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

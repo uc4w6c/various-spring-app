@@ -32,7 +32,7 @@ public class GachaController {
   }
 
   public static class CharacterMapper {
-    static CharacterOut toOut(Character character){
+    public static CharacterOut toOut(Character character){
       return CharacterOut.by(character.name());
     }
   }

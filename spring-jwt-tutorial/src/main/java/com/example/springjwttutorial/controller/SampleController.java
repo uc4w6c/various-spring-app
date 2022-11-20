@@ -2,7 +2,7 @@ package com.example.springjwttutorial.controller;
 
 import com.example.springjwttutorial.domain.model.user.User;
 import com.example.springjwttutorial.domain.repository.user.UserRepository;
-import com.example.springjwttutorial.infrastructure.dto.user.UserEntity;
+import com.example.springjwttutorial.domain.dto.user.UserEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

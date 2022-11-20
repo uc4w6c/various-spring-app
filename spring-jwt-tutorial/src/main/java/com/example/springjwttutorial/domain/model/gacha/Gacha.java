@@ -8,7 +8,7 @@ import com.example.springjwttutorial.domain.model.character.Character;
 
 public record Gacha(int needCoind, List<Character> characters) {
   public Gacha(List<Character> characters) {
-    this(1_000,characters);
+    this(300, characters);
   }
 
   // ランダムに登場キャラクターから3体を取得する
