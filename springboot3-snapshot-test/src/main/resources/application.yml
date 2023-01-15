@@ -1,3 +1,13 @@
 # server:
   # servlet:
     # context-path: /test
+spring:
+  datasource:
+    aa:
+      url: http://aa
+    bb:
+      url: http://
+test:
+  map:
+    aa: aaa
+    bb: bbb

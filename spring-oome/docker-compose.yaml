@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+    platform: linux/amd64
+    ports:
+      - "8080:8080"
+    environment:
+      - "JAVA_OPTS=-Xmx512m -XX:+ExitOnOutOfMemoryError -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/var/log/jvmlogs/"
+    volumes:
+      - type: volume
+        source: jvmlogs_volume
+        target: /var/log/jvmlogs/
+  inotify:
+    build:
+      context: inotify
+      dockerfile: Dockerfile
+    volumes:
+      - type: volume
+        source: jvmlogs_volume
+        target: /var/log/jvmlogs/
+
+volumes:
+  jvmlogs_volume:

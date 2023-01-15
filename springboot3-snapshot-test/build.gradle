@@ -17,11 +17,13 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter'
 	// implementation(fileTree(dir: 'libs', include: [
 	//   'springdoc-openapi-starter-webmvc-ui-2.0.0-M6-SNAPSHOT.jar'
 	// ]))
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.0-RC1'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.testng:testng:7.1.0'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {
