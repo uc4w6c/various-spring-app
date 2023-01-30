@@ -24,6 +24,8 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configurers.OAuth2AuthorizationServerConfigurer;
+import org.springframework.security.oauth2.server.authorization.config.annotation.web.configurers.OidcClientRegistrationEndpointConfigurer;
+import org.springframework.security.oauth2.server.authorization.oidc.web.authentication.OidcClientRegistrationAuthenticationConverter;
 import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 import org.springframework.security.oauth2.server.authorization.token.*;
@@ -45,7 +47,19 @@ public class AuthorizationServerConfig {
       throws Exception {
     OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
     http.getConfigurer(OAuth2AuthorizationServerConfigurer.class)
-        .oidc(Customizer.withDefaults());	// Enable OpenID Connect 1.0
+      // .oidc(Customizer.withDefaults());	// Enable OpenID Connect 1.0
+      .oidc(oidc -> oidc.clientRegistrationEndpoint(Customizer.withDefaults()));
+        /*
+      .oidc(oidc -> oidc.clientRegistrationEndpoint(clientRegistrationEndpoint ->
+          clientRegistrationEndpoint.clientRegistrationRequestConverter(new OidcClientRegistrationAuthenticationConverter())
+              .clientRegistrationRequestConverters(clientRegistrationRequestConvertersConsumers)
+              .authenticationProvider(authenticationProvider)
+              .authenticationProviders(authenticationProvidersConsumer)
+              .clientRegistrationResponseHandler(clientRegistrationResponseHandler)
+              .errorResponseHandler(errorResponseHandler)
+      ));
+         */
+
     http
         // Redirect to the login page when not authenticated from the
         // authorization endpoint
@@ -98,6 +112,7 @@ public class AuthorizationServerConfig {
         .redirectUri("http://127.0.0.1:8080/authorized")
         .scope(OidcScopes.OPENID)
         .scope(OidcScopes.PROFILE)
+        .scope("client.create")
         .scope("message.read")
         .scope("message.write")
         .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())

@@ -14,6 +14,9 @@ https://spring.pleiades.io/spring-authorization-server/docs/current/reference/ht
 https://spring.pleiades.io/spring-authorization-server/docs/current/reference/html/guides/how-to-userinfo.html#how-to-userinfo
 
 ### クライアントのと登録
+これで行ける。Bearer にはクライアントクレデンシャルで取得したトークンを利用する
+curl -X POST -v "http://localhost:8080/connect/register" -d '{ "client_id": "123", "redirect_uris": "http://127.0.0.1/callback" }' -H 'Content-Type: application/json' -H 'Authorization: Bearer eyJraWQiOiI5Y2Y1YTg3Ni0zM2M3LTQ5ZTMtODlkYy04OGIwM2NmYjA2ZjYiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJtZXNzYWdpbmctY2xpZW50IiwiYXVkIjoibWVzc2FnaW5nLWNsaWVudCIsIm5iZiI6MTY3NTA0MTcxOCwic2NvcGUiOlsiY2xpZW50LmNyZWF0ZSJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAiLCJleHAiOjE2NzUwNDIwMTgsImlhdCI6MTY3NTA0MTcxOCwidG9rZW4iOiIyMTU0NzdjYi05Mzg1LTQ5OTctYjg3MC1kZmQ0MTc3MmVjNDcifQ.hPkIrnbz3cQsss4j4v0V-vyTi7Y3Fh2jHJLZce5HqtHVq1AlNZuDZueVL-jwzRDorsaHLK0l1nMhEOg_NgPkfCgieMTQYtTX-zxMCe5pGHM2-0WY7TaSNHum-gR4wFtOAKPbd3FPrzWpURL4cbAm8e236Bf29vzHXCxgBHej4ZIoWoASEX4b4SWcBoKXuGsFog9jLLFgYcExNnvS3T-BRvncx_2CVaGg5zhfBE6lQlDUDFR537jlTwtVhjVK16gh3Qdltd2CSRbut2BTnPFqiIi8AfGP4AEBbAROvSHZOS2ClmjoRweaFtBq38FtqiwluJchnhjvCqLQReG5B4FEdg'
+
 /connect/register
 OidcClientRegistrationEndpointFilterで実施している
 
