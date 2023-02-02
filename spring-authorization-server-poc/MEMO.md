@@ -43,3 +43,12 @@ jwks_uri
 id_token_signed_response_alg
 
 ## ユーザー認証
+http://localhost:8080/oauth2/authorize?response_type=code&scope=openid%20profile&client_id=messaging-client&redirect_uri=http%3A%2F%2F127.0.0.1%3A8080%2Flogin%2Foauth2%2Fcode%2Fmessaging-client-oidc
+
+OAuth2AuthorizationEndpointFilter
+->
+OAuth2AuthorizationCodeRequestAuthenticationProvider
+
+
+
+http://127.0.0.1:8080/login/oauth2/code/messaging-client-oidc?code=wDJEvLfIC71liLoS_JMnesgL9rH1BPvD4e2I5_GzxYX8FK0EozTxN2tqRIMI1I1A9F1T57iiat7BF6J9awNbSr9MIXWE2fhBuks27sMjwApB_VmEXKMTufnlZdG2oEaf

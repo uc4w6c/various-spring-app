@@ -90,11 +90,13 @@ public class AuthorizationServerConfig {
   }
 
   @Bean
-  public UserDetailsService userDetailsService() {
-    UserDetails userDetails = User.withDefaultPasswordEncoder()
+  public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
+    UserDetails userDetails = User// .withDefaultPasswordEncoder()
+        .builder()
         .username("user")
         .password("password")
         .roles("USER")
+        .passwordEncoder(passwordEncoder::encode)
         .build();
 
     return new InMemoryUserDetailsManager(userDetails);
