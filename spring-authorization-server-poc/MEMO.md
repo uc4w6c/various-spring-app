@@ -49,6 +49,55 @@ OAuth2AuthorizationEndpointFilter
 ->
 OAuth2AuthorizationCodeRequestAuthenticationProvider
 
+http://127.0.0.1:8080/login/oauth2/code/messaging-client-oidc?code=yaVFTg8oWhCXYh_KVWiIeXD3Nc9KQ1mv7SVFAzHZGbFsxbE3u3L2KE-iim8JOj-xArfx5ITUSRrXhyP8CVmXoyLJYYM8-29JJYSUMyRWuoZ19L0IYUnvWyA4ak_pQdIm&continue
+
+ihlbuYDXQnxCoXDSMEJmmlcaLJuYbgksa1YHM17x3IpeJe9vUqVnFX9RuVW-5E3Y3yilQKemlEyeaU7k50-CPTNkXthWRWL_ZWJq_yG219tK_yHbGDN6YXiH6ijXKUb3
+# -H 'Authorization: Bearer eyJraWQiOiI4OTRjNjUzMi01YWYwLTRjNDUtYjg4ZC0zYmZiYzY1Y2FhOTQiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJtZXNzYWdpbmctY2xpZW50IiwiYXVkIjoibWVzc2FnaW5nLWNsaWVudCIsIm5iZiI6MTY3NTM5MTcwMiwic2NvcGUiOlsibWVzc2FnZS5yZWFkIl0sImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MCIsImV4cCI6MTY3NTM5MjAwMiwiaWF0IjoxNjc1MzkxNzAyLCJ0b2tlbiI6IjkyMTk4OTkyLWMwY2MtNGM5My1hYjZkLTg5NGZhYzEyNGUxNyJ9.Z1T1FLHypRdofdi5w9g32ieQDS-1-9nZh80Ga1OB2G9IpM9B4uDMjjDi9G_kvmAtl81CtcBqU7eQgUWKwDb5z0AnKUAG9o7jIV2Mtm-k1uZOb8G7_bhcSNbNw7D7Lc2AX7ZzEyB_vbSx_GN2zR6_1c4A-4bISMXemV95GCePjdBVL179-Be3WL3vGdZmVR2EkTewIYRMf5jjFqPY0jVGzgYixD63NyEvf6ORIeKE3mRC1Wtphl_5v605PgI5chDlRKVEcENYVZk4IN3-JH1r5bqg1Kf3c3rwLi0vfLvtX40aB3RzUnGx032S1twDc70MgGfE9DaCIhhLZFAEu0mkig' \
+
+$ curl -X POST -v "http://localhost:8080/oauth2/token" -H 'Content-Type: application/x-www-form-urlencoded' -u messaging-client:secret -d "grant_type=authorization_code&redirect_uri=http%3A%2F%2F127.0.0.1%3A8080%2Flogin%2Foauth2%2Fcode%2Fmessaging-client-oidc&code=rTxICQl46NpzzaOkScs8tu1__SDvv9ysZiyI0F6PWW-kH3CdZqd9i0s3nGXAprtZXTlF6hzZwhruqaYQ9AobC1FUTlJaB8nDYwqeZTV3w4SjBhF-xeCwVPvioNFt-nDR"
+
+結果
+
+```
+{
+  "kid": "894c6532-5af0-4c45-b88d-3bfbc65caa94",
+  "alg": "RS256"
+}
+{
+"sub": "user",
+"aud": "messaging-client",
+"nbf": 1675393012,
+"scope": [
+"openid",
+"profile"
+],
+"iss": "http://localhost:8080",
+"exp": 1675393312,
+"iat": 1675393012,
+"token": "78015c1d-bde3-401a-b2f1-a77f530d8ed0"
+}
+```
+
+authorizeは
+OAuth2AuthorizationCodeRequestAuthenticationConverterでユーザーの情報取得
+OAuth2AuthorizationCodeRequestAuthenticationProvider
+
+tokenは
+ユーザーの認可トークン認証はOAuth2AuthorizationCodeAuthenticationProviderで実施
 
 
-http://127.0.0.1:8080/login/oauth2/code/messaging-client-oidc?code=wDJEvLfIC71liLoS_JMnesgL9rH1BPvD4e2I5_GzxYX8FK0EozTxN2tqRIMI1I1A9F1T57iiat7BF6J9awNbSr9MIXWE2fhBuks27sMjwApB_VmEXKMTufnlZdG2oEaf
+ユーザーのときはOAuth2AuthorizationのprincipalNameにはuserがセットされる
+
+
+## 公開鍵情報を取得
+http://localhost:8080/oauth2/jwks
+
+## アクセストークンの妥当性チェック
+http://localhost:8080/oauth2/introspect
+参考: https://qiita.com/minamijoyo/items/bd76ce780e4551d7c951
+
+## アクセストークンの破棄
+http://localhost:8080/oauth2/revoke
+
+## URL一覧確認
+http://localhost:8080/.well-known/oauth-authorization-server
