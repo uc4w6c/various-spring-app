@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.core.userdetails.User;
@@ -41,6 +42,7 @@ import java.security.interfaces.RSAPublicKey;
 import java.util.UUID;
 
 @Configuration
+@EnableMethodSecurity
 public class AuthorizationServerConfig {
   @Bean
   @Order(1)
@@ -74,6 +76,7 @@ public class AuthorizationServerConfig {
     return http.build();
   }
 
+  /*
   @Bean
   @Order(2)
   public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http)
@@ -88,6 +91,7 @@ public class AuthorizationServerConfig {
 
     return http.build();
   }
+   */
 
   @Bean
   public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
@@ -118,7 +122,9 @@ public class AuthorizationServerConfig {
         .redirectUri("http://127.0.0.1:8080/authorized")
         .scope(OidcScopes.OPENID)
         .scope(OidcScopes.PROFILE)
+        .scope("token.create")
         .scope("client.create")
+        .scope("time.read")
         .scope("message.read")
         .scope("message.write")
         .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
