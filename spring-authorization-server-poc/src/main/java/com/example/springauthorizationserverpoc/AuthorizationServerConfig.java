@@ -42,7 +42,6 @@ import java.security.interfaces.RSAPublicKey;
 import java.util.UUID;
 
 @Configuration
-@EnableMethodSecurity
 public class AuthorizationServerConfig {
   @Bean
   @Order(1)
